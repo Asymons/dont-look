@@ -7,6 +7,7 @@
 
 #include <cstdlib>
 #include <iostream>
+#include <string>
 #include <memory>
 #include <utility>
 #include <boost/asio.hpp>
@@ -44,9 +45,17 @@ private:
     void do_write(std::size_t length){
         auto self(shared_from_this());
 
-        std::cout << (int)(worker->getFaceCount())/2 << std::endl;
 
-        strcpy(data_, std::to_string((int)(worker->getFaceCount())/2).c_str());
+        std::string str = std::to_string((int)(worker->getFaceCount())/2);
+
+        str += "\n\0";
+
+
+        std::cout << str;
+
+        memset(data_, '\0', sizeof(data_));
+
+        strcpy(data_, str.c_str());
 
         boost::asio::async_write(socket_, boost::asio::buffer(data_, length),
                                 [this, self](boost::system::error_code ec, std::size_t){

@@ -40,7 +40,7 @@ public:
             flip(orig_frame, orig_frame, 1);
             if(orig_frame.empty()) break;
             w.proc(orig_frame, orig_frame);
-            imshow("Window", orig_frame);
+            //imshow("Window", orig_frame);
             if(waitKey(1)  ==  27) break;
 
         }
