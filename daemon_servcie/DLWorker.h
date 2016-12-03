@@ -12,7 +12,11 @@
 #include "opencv2/highgui/highgui.hpp"
 #include "opencv2/imgproc/imgproc.hpp"
 
-#define FACE_FILE_MAC "/usr/local/opt/opencv/share/OpenCV/haarcascades/haarcascade_frontalface_alt.xml"
+#ifdef __MACH__
+    #define FACE_FILE "/usr/local/opt/opencv/share/OpenCV/haarcascades/haarcascade_frontalface_alt.xml"
+#elif __linux
+    #define FACE_FILE "﻿/usr/local/share/OpenCV/haarcascades/haarcascade_frontalface_alt.xml"
+#endif
 
 class DLWorker {
 

@@ -21,7 +21,7 @@ class DLVideoLoop {
 public:
     static void run(){
         VideoCapture cap(0);
-        DLWorker w(FACE_FILE_MAC);
+        DLWorker w(FACE_FILE);
         boost::asio::io_service io_service;
         DLFaceCountService service(io_service, 8888, &w);
 
