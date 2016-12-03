@@ -6,6 +6,7 @@
 #include <cmath>
 #include <opencv2/opencv.hpp>
 #include "DLWorker.h"
+#include "DLFaceCountService.h"
 
 
 
@@ -13,6 +14,7 @@ using namespace std;
 using namespace cv;
 
 int main(int argc, char ** argv){
+
 
 
     VideoCapture cap(0);
