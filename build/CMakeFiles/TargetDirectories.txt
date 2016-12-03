@@ -1,0 +1,5 @@
+/Users/Azhng/git/dont-look/build/CMakeFiles/rebuild_cache.dir
+/Users/Azhng/git/dont-look/build/CMakeFiles/edit_cache.dir
+/Users/Azhng/git/dont-look/build/src/CMakeFiles/rebuild_cache.dir
+/Users/Azhng/git/dont-look/build/src/CMakeFiles/edit_cache.dir
+/Users/Azhng/git/dont-look/build/src/CMakeFiles/dont-look.dir
