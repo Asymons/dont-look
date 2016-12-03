@@ -21,7 +21,7 @@ void DLWorker::proc(const cv::Mat input, cv::Mat &output) {
                             , 1.1
                             , 2
                             , 0|CV_HAAR_SCALE_IMAGE
-                            , cv::Size(80,80) );
+                            , cv::Size(100,100) );
 
     std::for_each(this->targets.begin(),
                   this->targets.end(),
@@ -47,6 +47,6 @@ void DLWorker::proc(const cv::Mat input, cv::Mat &output) {
     this->face_count = targets.size();
 }
 
-uint32_t DLWorker::getFaceCount() {
+const uint32_t DLWorker::getFaceCount() const {
     return this->face_count;
 }
