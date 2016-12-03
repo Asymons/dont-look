@@ -1,14 +1,26 @@
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Button;
+
+import java.awt.AWTException;
+
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.wb.swt.SWTResourceManager;
 
 public class Dont {
+	
 
+	private SystemEvents s;
+	
+	public Dont() throws AWTException{
+		s = new SystemEvents();
+	}
 	protected Shell shlDontLook;
+	private Text text;
 
 	/**
 	 * Launch the application.
@@ -66,6 +78,25 @@ public class Dont {
 		lblTitle.setFont(SWTResourceManager.getFont(".Helvetica Neue DeskInterface", 24, SWT.NORMAL));
 		lblTitle.setBounds(161, 10, 120, 33);
 		lblTitle.setText("Don't Look");
+		
+		text = new Text(shlDontLook, SWT.BORDER);
+		text.setBounds(111, 134, 196, 19);
+		text.setText("No one is watching currently.");
+		text.setEditable(false);
+		
+		btnEnable.addListener(SWT.Selection, new Listener()
+		{
+		    @Override
+		    public void handleEvent(Event event)
+		    {
+		    	s.dimScreen();//;; System.out.println("SWT.Selection");
+		    	System.out.println("Pressed Enable");
+		    }
+		});
+		
+		
 
 	}
+	
+	
 }
