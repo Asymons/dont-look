@@ -1,6 +1,3 @@
-//
-// Created by Archer Zhang on 2016-11-19.
-//
 
 #include <iostream>
 #include <cmath>
@@ -12,11 +9,21 @@ using namespace cv;
 int main(int argc, char ** argv){
 
 
-    cout << "running" << endl;
-    Mat g;
+    VideoCapture cap(0);
 
-    cout << g << endl;
+    if(!cap.open(0)){
+        return 0;
+    }
 
+    while(1){
+        Mat orig_frame;
+        cap >> orig_frame;
+        flip(orig_frame, orig_frame, 1);
+        if(orig_frame.empty()) break;
+        imshow("Window", orig_frame);
+        if(waitKey(1)  ==  27) break;
+
+    }
 
     return 0;
 
