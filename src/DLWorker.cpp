@@ -4,11 +4,49 @@
 
 #include "DLWorker.h"
 
-DLWorker::DLWorker() {
-    this->classifier.load(FACE_FILE);
+DLWorker::DLWorker(const cv::string& filename) {
+    this->classifier.load(filename);
 }
 
 void DLWorker::proc(const cv::Mat input, cv::Mat &output) {
+
+    cv::Mat canvas;
+
+    input.copyTo(canvas);
+
     cv::cvtColor(input, output, CV_BGR2GRAY);
-    
+    cv::equalizeHist(output, output);
+    this->classifier.detectMultiScale(output
+                            , this->targets
+                            , 1.1
+                            , 2
+                            , 0|CV_HAAR_SCALE_IMAGE
+                            , cv::Size(80,80) );
+
+    std::for_each(this->targets.begin(),
+                  this->targets.end(),
+                  [&](cv::Rect r){
+                      this->targets.push_back(r);
+                  });
+
+    //std::cout << this->targets.size() << std::endl;
+
+    std::for_each(this->targets.begin(),
+                  this->targets.end(),
+                  [&](cv::Rect& r){
+                      cv::rectangle(
+                              canvas
+                              , cv::Point(r.x, r.y)
+                              , cv::Point(r.x + r.width, r.y + r.height)
+                              , cv::Scalar(0,255,0)
+                              , 2);
+                  });
+
+    output = canvas;
+
+    this->face_count = targets.size();
+}
+
+uint32_t DLWorker::getFaceCount() {
+    return this->face_count;
 }

@@ -7,6 +7,8 @@
 #include <opencv2/opencv.hpp>
 #include "DLWorker.h"
 
+
+
 using namespace std;
 using namespace cv;
 
@@ -14,7 +16,7 @@ int main(int argc, char ** argv){
 
 
     VideoCapture cap(0);
-    DLWorker w;
+    DLWorker w(FACE_FILE_MAC);
 
 
     if(!cap.open(0)){
