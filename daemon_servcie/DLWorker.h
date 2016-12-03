@@ -31,7 +31,7 @@ public:
 
 
     // get number of face being detected
-    uint32_t getFaceCount();
+    const uint32_t getFaceCount() const;
 
 };
 
